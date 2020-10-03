@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CRUDProduct.Models.Category>
+
+@{
+    ViewBag.Title = "Category Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Category Dashboard</h2>
+
+<p>
+    <a class="btn btn-success" style="margin-bottom:10px" @Html.ActionLink("Add New", "Create") </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Product Dashboard", "Index", "Product")
+</div>
